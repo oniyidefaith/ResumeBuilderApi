@@ -1,0 +1,7 @@
+[run]
+source=resumebuilder/,cvbuilder/,
+omit=
+    venv
+    */migrations/*
+    */tests/*
+    */__init__.py
