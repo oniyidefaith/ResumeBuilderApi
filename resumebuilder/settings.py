@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zsjemf&j$m+w82!#o2v)*6yvadmcvu@0o%&+04+gl_vcb0c6&a'
+with open("C:/Users/user/Desktop/resume Builder/Backend/resumebuilder/secret_key.txt") as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -54,6 +55,9 @@ INSTALLED_APPS = [
     'drf_yasg',
 
 ]
+
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
