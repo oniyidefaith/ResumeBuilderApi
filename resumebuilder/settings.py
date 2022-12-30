@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zsjemf&j$m+w82!#o2v)*6yvadmcvu@0o%&+04+gl_vcb0c6&a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -227,6 +227,8 @@ JAZZMIN_SETTINGS = {
 JAZZMIN_UI_TWEAKS = {
     "theme": "lumen",
 }
+
+CSRF_COOKIE_SECURE = True
 
 
 # Update database configuration from $DATABASE_URL.
