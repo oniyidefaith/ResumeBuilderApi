@@ -1,8 +1,9 @@
 [run]
 source=resumebuilder/,cvbuilder/,
 omit=
+    secret_key.txt
     venv
     */migrations/*
     */tests/*
-    */__init__.py/*
-    secret_key.txt
+    */__init__.py
+
