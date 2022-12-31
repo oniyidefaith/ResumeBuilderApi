@@ -96,10 +96,14 @@ WSGI_APPLICATION = 'resumebuilder.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': 'resume', # This is where you put the name of the db file.
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'resume',
+        'USER': 'root',
+        'PASSWORD': 'Omoniyi1-B',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
 
 # Password validation
