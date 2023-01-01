@@ -245,4 +245,3 @@ DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
 
-DISABLE_COLLECTSTATIC=1
