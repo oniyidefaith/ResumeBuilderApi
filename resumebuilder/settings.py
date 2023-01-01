@@ -30,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
+
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -74,7 +74,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'resumebuilder.urls'
 
 TEMPLATES = [
@@ -147,8 +146,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -245,4 +242,3 @@ DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
 
-TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
