@@ -30,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -245,3 +245,4 @@ DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
 
+TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
