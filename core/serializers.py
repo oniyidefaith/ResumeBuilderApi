@@ -89,3 +89,45 @@ class ReferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = References
         fields = ('id', 'Name', 'Relationship', 'Phone',)
+
+
+class PersonalDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalDetails
+        fields = ('id', 'first_name', 'last_name', 'address', 'email,image', 'postal', 'city')
+
+
+class RecipientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecipientInfo
+        fields = ('id', 'contact_person', 'organization', 'address', 'postal', 'city')
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DateSubject
+        fields = ('id', 'date', 'application_model', 'position')
+
+
+class IntroductionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Introduction
+        fields = ('id', 'text', 'person', 'position', 'organization', 'magazine', 'website_name')
+
+
+class SituationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CurSituation
+        fields = ('id', 'text', 'position', 'organization', 'city', 'responsibility', 'education', 'school')
+
+
+class MotivationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Motivation
+        fields = ('id', 'text', 'position', 'organization', 'city', 'responsibility', 'personal_description')
+
+
+class ClosingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Closing
+        fields = ('id', 'text', 'position', 'email', 'phone', 'first_name', 'last_name')

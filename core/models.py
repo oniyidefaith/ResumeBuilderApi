@@ -152,13 +152,13 @@ def __str__(self):
 
 
 class VolunteerExperience(models.Model):
-    Organization = models.CharField(max_length=100)
-    Position = models.CharField(max_length=100)
-    StartDate = models.DateField()
+    Organization = models.CharField(max_length=100, blank=True)
+    Position = models.CharField(max_length=100, blank=True)
+    StartDate = models.DateField(blank=True)
     EndDate = models.DateField(blank=True)
-    URL = models.URLField()
-    Summary = models.CharField(max_length=200)
-    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    URL = models.URLField(blank=True)
+    Summary = models.CharField(max_length=200, blank=True)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True)
 
 
 def __str__(self):
@@ -173,8 +173,113 @@ class Projects(models.Model):
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
 
+def __str__(self):
+    return self.Name
+
+
 class References(models.Model):
-    Name = models.CharField(max_length=100)
-    Relationship = models.CharField(max_length=100)
-    Phone = PhoneNumberField(blank=True, region=None)
+    Name = models.CharField(max_length=100, blank=True)
+    Relationship = models.CharField(max_length=100, blank=True)
+    Phone = PhoneNumberField(blank=True, region=None, )
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True)
+
+
+def __str__(self):
+    return self.Name
+
+
+# Creating Api end points for a cover letter system
+
+class PersonalDetails(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, blank=True)
+    postal = models.IntegerField(blank=True)
+    city = models.CharField(max_length=100)
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.first_name
+
+
+class RecipientInfo(models.Model):
+    contact_person = models.CharField(max_length=100)
+    organization = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    postal = models.IntegerField()
+    city = models.CharField(max_length=100)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.contact_person
+
+
+class DateSubject(models.Model):
+    date = models.DateField()
+    application_model = models.CharField(max_length=100, blank=True)
+    position = models.CharField(max_length=100, blank=True)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.date
+
+
+class Introduction(models.Model):
+    text = models.TextField(max_length=600)
+    person = models.CharField(max_length=100, blank=True)
+    position = models.CharField(max_length=100, blank=True)
+    organization = models.CharField(max_length=120, blank=True)
+    magazine = models.CharField(max_length=100, blank=True)
+    website_name = models.CharField(max_length=100, blank=True)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.text
+
+
+class CurSituation(models.Model):
+    text = models.TextField(max_length=600)
+    position = models.CharField(max_length=100, blank=True)
+    organization = models.CharField(max_length=120)
+    city = models.CharField(max_length=100, blank=True)
+    responsibility = models.CharField(max_length=100, blank=True)
+    education = models.CharField(max_length=200, blank=True)
+    school = models.CharField(max_length=200, blank=True)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.text
+
+
+class Motivation(models.Model):
+    text = models.TextField(max_length=600)
+    position = models.CharField(max_length=100, blank=True)
+    organization = models.CharField(max_length=120)
+    city = models.CharField(max_length=100, blank=True)
+    responsibility = models.CharField(max_length=100, blank=True)
+    personal_description = models.CharField(max_length=200, blank=True)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+def __str__(self):
+    return self.text
+
+
+class Closing(models.Model):
+    text = models.TextField(max_length=600)
+    position = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(max_length=200)
+    Phone = PhoneNumberField(blank=True, region=None)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+
+def __str__(self):
+    return self.position
