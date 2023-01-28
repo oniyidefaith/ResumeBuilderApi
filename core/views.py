@@ -474,4 +474,4 @@ class RecipientView(generics.CreateAPIView):
     lookup_field = "id"
 
     def get_queryset(self):
-        return  RecipientInfo.objects.filter(owner=self.request.user)
+        return RecipientInfo.objects.filter(owner=self.request.user)
