@@ -1,4 +1,3 @@
-from .models import *
 from .serializers import *
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -7,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 class ResumeView(generics.CreateAPIView):
+    """This view allows you to create resume name"""
     serializer_class = ResumeSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -15,12 +15,14 @@ class ResumeView(generics.CreateAPIView):
 
 
 class DeleteResume(generics.DestroyAPIView):
+    """This view allows you to Delete an entire resume  """
     authentication_classes = []
     queryset = Links.objects.all()
     serializer_class = ResumeSerializer
 
 
 class ProfileView(generics.CreateAPIView):
+    """" This endpoint allows users to create the profile section in a resume """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = (IsAuthenticated,)
@@ -30,6 +32,7 @@ class ProfileView(generics.CreateAPIView):
 
 
 class DetailProfile(generics.RetrieveUpdateAPIView):
+    """This endpoint allows you to edit or put, get, update the profile """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated, ]
@@ -38,12 +41,8 @@ class DetailProfile(generics.RetrieveUpdateAPIView):
         return Profile.objects.filter(owner=self.request.user)
 
 
-# class DetailProfile(generics.RetrieveAPIView):
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-
-
 class CreateLinks(generics.CreateAPIView):
+    """This endpoint allows users to create their various links or urls section to their resume"""
     queryset = Links.objects.all()
     serializer_class = LinkSerializer
     permission_classes = (IsAuthenticated,)
@@ -53,6 +52,7 @@ class CreateLinks(generics.CreateAPIView):
 
 
 class ListLinks(generics.ListAPIView):
+    """This endpoint allows the users to have a list of their links added to the resume application"""
     serializer_class = LinkSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Links.objects.all()
@@ -62,6 +62,9 @@ class ListLinks(generics.ListAPIView):
 
 
 class GetLinks(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get , update , and delete any link
+    """
     permission_classes = (IsAuthenticated,)
     queryset = Links.objects.all()
     serializer_class = LinkSerializer
@@ -72,6 +75,9 @@ class GetLinks(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateWorkExperience(generics.CreateAPIView):
+    """
+    This endpoint allow users to create work experience
+    """
     queryset = WorkExperience.objects.all()
     serializer_class = WorkExperienceSerializer
     permission_classes = (IsAuthenticated,)
@@ -81,6 +87,9 @@ class CreateWorkExperience(generics.CreateAPIView):
 
 
 class UpdateWorkExperience(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user work experiences
+    """
     queryset = WorkExperience.objects.all()
     serializer_class = WorkExperienceSerializer
     permission_classes = (IsAuthenticated,)
@@ -91,6 +100,9 @@ class UpdateWorkExperience(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateEducationalHistory(generics.CreateAPIView):
+    """
+    This endpoint allow users to create their educational history
+    """
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
     permission_classes = (IsAuthenticated,)
@@ -100,6 +112,9 @@ class CreateEducationalHistory(generics.CreateAPIView):
 
 
 class UpdateEducationHistory(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user educational history
+    """
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
     permission_classes = (IsAuthenticated,)
@@ -110,6 +125,9 @@ class UpdateEducationHistory(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateAwards(generics.CreateAPIView):
+    """
+    This endpoint allows you to create awards for your resume
+    """
     queryset = Awards.objects.all()
     serializer_class = AwardSerializer
     permission_classes = (IsAuthenticated,)
@@ -119,6 +137,9 @@ class CreateAwards(generics.CreateAPIView):
 
 
 class ListAwards(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of your created awards
+    """
     serializer_class = AwardSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Awards.objects.all()
@@ -128,6 +149,9 @@ class ListAwards(generics.ListAPIView):
 
 
 class UpdateAwards(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user awards
+    """
     queryset = Awards.objects.all()
     serializer_class = AwardSerializer
     permission_classes = (IsAuthenticated,)
@@ -138,6 +162,9 @@ class UpdateAwards(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateCertificate(generics.CreateAPIView):
+    """
+    This endpoint allows users to create their own certificate
+    """
     queryset = Certifications.objects.all()
     serializer_class = CertificationSerializer
     permission_classes = (IsAuthenticated,)
@@ -147,6 +174,9 @@ class CreateCertificate(generics.CreateAPIView):
 
 
 class ListCertificate(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of your created certificate
+    """
     serializer_class = CertificationSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Certifications.objects.all()
@@ -156,6 +186,9 @@ class ListCertificate(generics.ListAPIView):
 
 
 class UpdateCertificates(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user awards
+    """
     queryset = Certifications.objects.all()
     serializer_class = CertificationSerializer
     permission_classes = (IsAuthenticated,)
@@ -166,6 +199,9 @@ class UpdateCertificates(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreatePublication(generics.CreateAPIView):
+    """
+    This endpoint allows users to create publications
+    """
     queryset = Publication.objects.all()
     serializer_class = PublicationSerializer
     permission_classes = (IsAuthenticated,)
@@ -175,6 +211,9 @@ class CreatePublication(generics.CreateAPIView):
 
 
 class ListPublication(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of created publications
+    """
     serializer_class = PublicationSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Publication.objects.all()
@@ -184,6 +223,9 @@ class ListPublication(generics.ListAPIView):
 
 
 class UpdatePublication(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user publication
+    """
     queryset = Publication.objects.all()
     serializer_class = PublicationSerializer
     permission_classes = (IsAuthenticated,)
@@ -194,6 +236,9 @@ class UpdatePublication(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateSkills(generics.CreateAPIView):
+    """
+    This endpoint allows users to create or skill sets
+    """
     queryset = Skills.objects.all()
     serializer_class = SkillSerializer
     permission_classes = (IsAuthenticated,)
@@ -203,6 +248,9 @@ class CreateSkills(generics.CreateAPIView):
 
 
 class ListSkill(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of created skills
+    """
     serializer_class = SkillSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Skills.objects.all()
@@ -212,6 +260,9 @@ class ListSkill(generics.ListAPIView):
 
 
 class UpdateSkill(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update user skills
+    """
     queryset = Skills.objects.all()
     serializer_class = SkillSerializer
     permission_classes = (IsAuthenticated,)
@@ -222,6 +273,9 @@ class UpdateSkill(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateLanguage(generics.CreateAPIView):
+    """
+    This endpoint allows users to create or sets of languages they understand
+    """
     queryset = Languages.objects.all()
     serializer_class = InterestSerializer
     permission_classes = (IsAuthenticated,)
@@ -231,6 +285,9 @@ class CreateLanguage(generics.CreateAPIView):
 
 
 class ListLanguage(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of created Languages
+    """
     serializer_class = InterestSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Languages.objects.all()
@@ -240,6 +297,9 @@ class ListLanguage(generics.ListAPIView):
 
 
 class UpdateLanguage(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update a set of user languages
+    """
     queryset = Languages.objects.all()
     serializer_class = InterestSerializer
     permission_classes = (IsAuthenticated,)
@@ -250,6 +310,9 @@ class UpdateLanguage(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateInterest(generics.CreateAPIView):
+    """
+    This endpoint allows users to include set of their interests
+    """
     queryset = Interests.objects.all()
     serializer_class = InterestSerializer
     permission_classes = (IsAuthenticated,)
@@ -259,6 +322,9 @@ class CreateInterest(generics.CreateAPIView):
 
 
 class ListInterest(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of users interest
+    """
     serializer_class = InterestSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Interests.objects.all()
@@ -268,6 +334,9 @@ class ListInterest(generics.ListAPIView):
 
 
 class UpdateInterest(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update a set of users interest
+    """
     queryset = Interests.objects.all()
     serializer_class = InterestSerializer
     permission_classes = (IsAuthenticated,)
@@ -278,6 +347,9 @@ class UpdateInterest(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateVolunteerView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create set of volunteer experience
+    """
     queryset = VolunteerExperience.objects.all()
     serializer_class = VolunteerSerializer
     permission_classes = (IsAuthenticated,)
@@ -287,6 +359,9 @@ class CreateVolunteerView(generics.CreateAPIView):
 
 
 class ListVolunteerView(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of users volunteer experience
+    """
     serializer_class = VolunteerSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = VolunteerExperience.objects.all()
@@ -296,6 +371,9 @@ class ListVolunteerView(generics.ListAPIView):
 
 
 class UpdateVolunteerView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update a set of users interest
+    """
     queryset = VolunteerExperience.objects.all()
     serializer_class = VolunteerSerializer
     permission_classes = (IsAuthenticated,)
@@ -306,6 +384,9 @@ class UpdateVolunteerView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateProjectView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create set of their completed projects
+    """
     queryset = Projects.objects.all()
     serializer_class = ProjectSerializer
     permission_classes = (IsAuthenticated,)
@@ -315,6 +396,9 @@ class CreateProjectView(generics.CreateAPIView):
 
 
 class ListProjects(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of users project
+    """
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = Projects.objects.all()
@@ -324,6 +408,9 @@ class ListProjects(generics.ListAPIView):
 
 
 class UpdateProjectView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update a set of projects
+    """
     queryset = Projects.objects.all()
     serializer_class = ProjectSerializer
     permission_classes = (IsAuthenticated,)
@@ -334,6 +421,9 @@ class UpdateProjectView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CreateReferenceView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create set of references they have
+    """
     queryset = References.objects.all()
     serializer_class = ReferenceSerializer
     permission_classes = (IsAuthenticated,)
@@ -343,6 +433,9 @@ class CreateReferenceView(generics.CreateAPIView):
 
 
 class ListReference(generics.ListAPIView):
+    """
+    This endpoint allows you to get a list of refrences the users have
+    """
     serializer_class = ReferenceSerializer
     permission_classes = [IsAuthenticated, ]
     queryset = References.objects.all()
@@ -352,6 +445,9 @@ class ListReference(generics.ListAPIView):
 
 
 class UpdateReference(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update a specific preference
+    """
     queryset = References.objects.all()
     serializer_class = ReferenceSerializer
     permission_classes = (IsAuthenticated,)
@@ -361,3 +457,21 @@ class UpdateReference(generics.RetrieveUpdateDestroyAPIView):
         return References.objects.filter(owner=self.request.user)
 
 
+class PersonalDetailsView(generics.CreateAPIView):
+    queryset = PersonalDetails.objects.all()
+    serializer_class = PersonalDetailSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return PersonalDetails.objects.filter(owner=self.request.user)
+
+
+class RecipientView(generics.CreateAPIView):
+    queryset = RecipientInfo
+    serializer_class = ReferenceSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return  RecipientInfo.objects.filter(owner=self.request.user)

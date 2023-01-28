@@ -91,6 +91,7 @@ class ReferenceSerializer(serializers.ModelSerializer):
         fields = ('id', 'Name', 'Relationship', 'Phone',)
 
 
+# Cover Letter Serializers
 class PersonalDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalDetails
