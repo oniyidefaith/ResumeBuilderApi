@@ -89,6 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def token(self):
+        
         token = jwt.encode(
             {'username': self.username, 'email': self.email,
              'exp': datetime.utcnow() + timedelta(hours=24)},

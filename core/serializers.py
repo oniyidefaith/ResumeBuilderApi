@@ -95,7 +95,7 @@ class ReferenceSerializer(serializers.ModelSerializer):
 class PersonalDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalDetails
-        fields = ('id', 'first_name', 'last_name', 'address', 'email,image', 'postal', 'city')
+        fields = ('id', 'first_name', 'last_name', 'address', 'email', 'image', 'postal', 'city')
 
 
 class RecipientSerializer(serializers.ModelSerializer):
@@ -131,4 +131,4 @@ class MotivationSerializer(serializers.ModelSerializer):
 class ClosingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Closing
-        fields = ('id', 'text', 'position', 'email', 'phone', 'first_name', 'last_name')
+        fields = ('id', 'text', 'position', 'email', 'Phone', 'first_name', 'last_name')

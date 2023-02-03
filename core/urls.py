@@ -41,6 +41,21 @@ urlpatterns = [
     path('reference', CreateReferenceView.as_view(), name='create-reference'),
     path('list_reference', ListReference.as_view(), name='list-reference'),
     path('reference_update/<int:id>', UpdateReference.as_view(), name='update-reference'),
+    # cover letter routes
+    path('personal_details', PersonalDetailsView.as_view(), name='personal-detail-view'),
+    path('update_personal_details', UpdatePersonalDetailView.as_view(), name='update-personal-details'),
+    path('create_recipient', RecipientView.as_view(), name='create-recipient-view'),
+    path('update_recipient', UpdateRecipientView.as_view(), name='update-recipient-view'),
+    path('create_subject', SubjectView.as_view(), name='create-cover-letter-subject'),
+    path('update_subject', UpdateSubjectView.as_view(), name='update-subject-view'),
+    path('create_introduction', IntroductionView.as_view(), name='create-cover-letter-introduction'),
+    path('update_introduction', UpdateIntroductionView.as_view(), name='update-introduction-view'),
+    path('create_situation', SituationView.as_view(), name='create-cover-letter-introduction'),
+    path('update_situation', UpdateSituationView.as_view(), name='update-situation-view'),
+    path('create_motivation', MotivationView.as_view(), name='create-cover-letter-motivation'),
+    path('update_motivation', UpdateMotivationView.as_view(), name='update-motivation-view'),
+    path('create_conclusion', ClosingView.as_view(), name='create-cover-letter-conclusion'),
+    path('update_conclusion', UpdateClosingView.as_view(), name='update-conclusion-view'),
 
 ]
 

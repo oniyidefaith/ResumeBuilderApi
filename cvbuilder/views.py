@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate
 # Create your views here.
 class AuthUserApiView(GenericAPIView):
     permission_classes = [permissions.IsAuthenticated, ]
+    serializer_class = RegisterSerializer
 
     def get(self, request):
         user = request.user

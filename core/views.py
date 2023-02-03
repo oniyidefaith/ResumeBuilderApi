@@ -434,7 +434,7 @@ class CreateReferenceView(generics.CreateAPIView):
 
 class ListReference(generics.ListAPIView):
     """
-    This endpoint allows you to get a list of refrences the users have
+    This endpoint allows you to get a list of references the users have
     """
     serializer_class = ReferenceSerializer
     permission_classes = [IsAuthenticated, ]
@@ -457,7 +457,12 @@ class UpdateReference(generics.RetrieveUpdateDestroyAPIView):
         return References.objects.filter(owner=self.request.user)
 
 
+# cover letter views
+
 class PersonalDetailsView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create their personal details in the cover letter
+    """
     queryset = PersonalDetails.objects.all()
     serializer_class = PersonalDetailSerializer
     permission_classes = [IsAuthenticated, ]
@@ -467,7 +472,23 @@ class PersonalDetailsView(generics.CreateAPIView):
         return PersonalDetails.objects.filter(owner=self.request.user)
 
 
+class UpdatePersonalDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their personal details
+    """
+    queryset = References.objects.all()
+    serializer_class = ReferenceSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return References.objects.filter(owner=self.request.user)
+
+
 class RecipientView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create the recipient to their cover letter
+    """
     queryset = RecipientInfo
     serializer_class = ReferenceSerializer
     permission_classes = [IsAuthenticated, ]
@@ -475,3 +496,146 @@ class RecipientView(generics.CreateAPIView):
 
     def get_queryset(self):
         return RecipientInfo.objects.filter(owner=self.request.user)
+
+
+class UpdateRecipientView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their recipient details
+    """
+    queryset = RecipientInfo.objects.all()
+    serializer_class = RecipientSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return RecipientInfo.objects.filter(owner=self.request.user)
+
+
+class SubjectView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create the Subject to their cover letter
+    """
+    queryset = DateSubject
+    serializer_class = SubjectSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return DateSubject.objects.filter(owner=self.request.user)
+
+
+class UpdateSubjectView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their subject details
+    """
+    queryset = DateSubject.objects.all()
+    serializer_class = SubjectSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return DateSubject.objects.filter(owner=self.request.user)
+
+
+class IntroductionView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create the introduction to their cover letter
+    """
+    queryset = Introduction
+    serializer_class = IntroductionSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Introduction.objects.filter(owner=self.request.user)
+
+
+class UpdateIntroductionView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their introduction details
+    """
+    queryset = Introduction.objects.all()
+    serializer_class = IntroductionSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Introduction.objects.filter(owner=self.request.user)
+
+
+class SituationView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create the situation to their cover letter
+    """
+    queryset = CurSituation
+    serializer_class = SituationSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return CurSituation.objects.filter(owner=self.request.user)
+
+
+class UpdateSituationView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their situation or work details
+    """
+    queryset = CurSituation.objects.all()
+    serializer_class = SituationSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return CurSituation.objects.filter(owner=self.request.user)
+
+
+class MotivationView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create a motivation field to their cover letter
+    """
+    queryset = Motivation
+    serializer_class = MotivationSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Motivation.objects.filter(owner=self.request.user)
+
+
+class UpdateMotivationView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update their motivation field
+    """
+    queryset = Motivation.objects.all()
+    serializer_class = MotivationSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Motivation.objects.filter(owner=self.request.user)
+
+
+class ClosingView(generics.CreateAPIView):
+    """
+    This endpoint allows users to create the ending part or conclusion  to their cover letter
+    """
+    queryset = Closing
+    serializer_class = ClosingSerializer
+    permission_classes = [IsAuthenticated, ]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Closing.objects.filter(owner=self.request.user)
+
+
+class UpdateClosingView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This endpoint allows you to get, delete,and update the concluding part to their cover letter
+    """
+    queryset = Closing.objects.all()
+    serializer_class = ClosingSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Closing.objects.filter(owner=self.request.user)
