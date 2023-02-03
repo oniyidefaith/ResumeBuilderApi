@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from django.contrib.auth.models import User
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -23,3 +24,9 @@ class LoginSerializer(serializers.ModelSerializer):
         read_only_fields = ['token']
 
 
+class ForgotPasswordSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        model = User
+        fields = ('email',)

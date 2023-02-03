@@ -37,7 +37,7 @@ class LoginApiView(GenericAPIView):
 
     def post(self, request):
         email = request.data.get('email', None)
-        password = request.data.get('password', None)
+        password = request.data.get('p assword', None)
 
         user = authenticate(username=email, password=password)
 
@@ -45,3 +45,14 @@ class LoginApiView(GenericAPIView):
             serializer = self.serializer_class(user)
             return response.Response(serializer.data, status=status.HTTP_200_OK)
         return response.Response({'message': "Invalid credentials, try again"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class ForgotPasswordView(generics.CreateAPIView):
+    serializer_class = ForgotPasswordSerializer
+
+    def create(self, request, *args, **kwargs):
+        # Handle the forgot password logic, such as sending a password reset email
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data['email']
+        return response.Response({'message': 'Password reset email sent'})
