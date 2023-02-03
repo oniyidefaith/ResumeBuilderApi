@@ -9,7 +9,6 @@ from django.contrib.auth import authenticate
 # Create your views here.
 class AuthUserApiView(GenericAPIView):
     permission_classes = [permissions.IsAuthenticated, ]
-    serializer_class = RegisterSerializer
 
     def get(self, request):
         user = request.user
@@ -37,7 +36,7 @@ class LoginApiView(GenericAPIView):
 
     def post(self, request):
         email = request.data.get('email', None)
-        password = request.data.get('p assword', None)
+        password = request.data.get('password', None)
 
         user = authenticate(username=email, password=password)
 
@@ -55,4 +54,6 @@ class ForgotPasswordView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data['email']
+        # ...
+        # Return a success response
         return response.Response({'message': 'Password reset email sent'})
