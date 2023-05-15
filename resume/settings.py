@@ -25,14 +25,17 @@ dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+AUTH_USER_MODEL = 'auths.User'
 
-
+SWAGGER_SETTINGS = {
+   'USE_SESSION_AUTH': False
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     #local libraries
+
     'rest_framework',
     'rest_framework_simplejwt',
     'django_rest_passwordreset',
@@ -97,6 +102,10 @@ DATABASES = {
         'HOST': os.environ.get('PGHOST'),
         'PORT': '7725',
     }
+    # 'default': {
+    #      'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+    #     'NAME': 'new.db',
+    # }
 }
 
 

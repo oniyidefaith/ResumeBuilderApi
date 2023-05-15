@@ -5,7 +5,7 @@ from .models import *
 class ResumeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreateResume
-        fields = ('name', 'slug')
+        fields = ('id','name', 'slug')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -52,7 +52,7 @@ class CertificationSerializer(serializers.ModelSerializer):
 class PublicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publication
-        fields = ('id', 'Title', 'Name', 'URL', 'Date', 'Description')
+        fields = ('id', 'title', 'name', 'url', 'date', 'description')
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -76,7 +76,7 @@ class InterestSerializer(serializers.ModelSerializer):
 class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
         model = VolunteerExperience
-        fields = ('id', 'Organization', 'Position', 'StartDate', 'EndDate', 'URL', 'Summary')
+        fields = ('id', 'organization', 'position', 'startDate', 'endDate', 'url', 'summary')
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -113,7 +113,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class IntroductionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Introduction
-        fields = ('id', 'text', 'person', 'position', 'organization', 'magazine', 'website_name')
+        fields = ('id', 'text')
 
 
 
