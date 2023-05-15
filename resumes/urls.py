@@ -1,0 +1,56 @@
+from django.urls import path
+from .views import *
+
+
+urlpatterns = [
+    path('create', ResumeView.as_view(), name='create-resume'),
+    path('delete/<int:pk>/', DeleteResume.as_view(), name='delete'),
+    path('profile', ProfileView.as_view(), name='create-profile'),
+    path('profile_details/<int:pk>/', DetailProfile.as_view(), name='profile-details'),
+    path('links', CreateLinks.as_view(), name='create-links'),
+    path('link_list', ListLinks.as_view(), name='list-links'),
+    path('links/<int:id>', GetLinks.as_view(), name='get-links'),
+    path('work_experience', CreateWorkExperience.as_view(), name='create-work-experience'),
+    path('work_experience_update/<int:id>', UpdateWorkExperience.as_view(), name='update-work-experience'),
+    path('create_education_history', CreateEducationalHistory.as_view(), name='create-educational-history'),
+    path('education_history_update/<int:id>', UpdateEducationHistory.as_view(), name='update-educational-history'),
+    path('create_award', CreateAwards.as_view(), name='create-award'),
+    path('award_list', ListAwards.as_view(), name='list-awards'),
+    path('award_update/<int:id>', UpdateAwards.as_view(), name='update-awards'),
+    path('certificate', CreateCertificate.as_view(), name='create-certificate'),
+    path('list_certificate', ListCertificate.as_view(), name='list-certificate'),
+    path('certificate_update/<int:id>', UpdateCertificates.as_view(), name='update-awards'),
+    path('publication', CreatePublication.as_view(), name='create-publication'),
+    path('list_publication', ListPublication.as_view(), name='list-publication'),
+    path('publication_update/<int:id>', UpdatePublication.as_view(), name='update-publication'),
+    path('skill', CreateSkills.as_view(), name='create-skill'),
+    path('list_skill', ListSkill.as_view(), name='list-skill'),
+    path('skill_update/<int:id>', UpdateSkill.as_view(), name='update-skill'),
+    path('language', CreateLanguage.as_view(), name='create-language'),
+    path('list_language', ListLanguage.as_view(), name='list-language'),
+    path('language_update/<int:id>', UpdateLanguage.as_view(), name='update-language'),
+    path('interest', CreateInterest.as_view(), name='create-interest'),
+    path('list_interest', ListInterest.as_view(), name='list-interest'),
+    path('interest_update/<int:id>', UpdateInterest.as_view(), name='update-interest'),
+    path('volunteer', CreateVolunteerView.as_view(), name='create-volunteer-experience'),
+    path('list_volunteer', ListVolunteerView.as_view(), name='list-volunteer-experience'),
+    path('volunteer_update/<int:id>', UpdateVolunteerView.as_view(), name='update-volunteer-experience'),
+    path('project', CreateProjectView.as_view(), name='create-projects'),
+    path('list_project', ListProjects.as_view(), name='list-project'),
+    path('project_update/<int:id>', UpdateProjectView.as_view(), name='update-projects'),
+    path('reference', CreateReferenceView.as_view(), name='create-reference'),
+    path('list_reference', ListReference.as_view(), name='list-reference'),
+    path('reference_update/<int:id>', UpdateReference.as_view(), name='update-reference'),
+    # cover letter routes
+    path('personal_details', PersonalDetailsView.as_view(), name='personal-detail-view'),
+    path('update_personal_details', UpdatePersonalDetailView.as_view(), name='update-personal-details'),
+    path('create_recipient', RecipientView.as_view(), name='create-recipient-view'),
+    path('update_recipient', UpdateRecipientView.as_view(), name='update-recipient-view'),
+    path('create_subject', SubjectView.as_view(), name='create-cover-letter-subject'),
+    path('update_subject', UpdateSubjectView.as_view(), name='update-subject-view'),
+    path('create_introduction', IntroductionView.as_view(), name='create-cover-letter-introduction'),
+    path('update_introduction', UpdateIntroductionView.as_view(), name='update-introduction-view'),
+
+
+]
+
