@@ -30,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['web-production-cb590.up.railway.app', '127.0.0.1']
 AUTH_USER_MODEL = 'auths.User'
 
 SWAGGER_SETTINGS = {
