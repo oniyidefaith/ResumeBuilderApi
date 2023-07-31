@@ -18,7 +18,6 @@ import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 dotenv_file = os.path.join(BASE_DIR, ".env")
@@ -31,11 +30,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 # ALLOWED_HOSTS = ['web-production-cb590.up.railway.app', '127.0.0.1']
-ALLOWED_HOSTS=['*']
+['.vercel.app', '.now.sh']
 AUTH_USER_MODEL = 'auths.User'
 
 SWAGGER_SETTINGS = {
-   'USE_SESSION_AUTH': False
+    'USE_SESSION_AUTH': False
 }
 # Application definition
 
@@ -47,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_yasg',
-    #local libraries
+    # local libraries
 
     'rest_framework',
     'rest_framework_simplejwt',
@@ -87,8 +86,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'resume.wsgi.application'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
+
+WSGI_APPLICATION = 'resume.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -96,7 +98,7 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'URL':os.environ.get('PGURL'),
+        'URL': os.environ.get('PGURL'),
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': os.environ.get('PGPASSWORD'),
@@ -108,7 +110,6 @@ DATABASES = {
     #     'NAME': 'new.db',
     # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -157,7 +158,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -173,41 +173,38 @@ USE_TZ = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-
 CORS_ALLOWED_ORIGINS = [
-"https://domain.com",
-"https://api.domain.com",
-"http://localhost:8080",
-"http://127.0.0.1:9000",
-"http://localhost:3000",
+    "https://domain.com",
+    "https://api.domain.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+    "http://localhost:3000",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-r"^https://\w+\.domain\.com$",
+    r"^https://\w+\.domain\.com$",
 ]
 
 CORS_ALLOW_METHODS = [
-'DELETE',
-'GET',
-'OPTIONS',
-'PATCH',
-'POST',
-'PUT',
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
 ]
-
 
 CORS_ALLOW_HEADERS = [
-'accept',
-'accept-encoding',
-'authorization',
-'content-type',
-'dnt',
-'origin',
-'user-agent',
-'x-csrftoken',
-'x-requested-with',
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -220,4 +217,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
