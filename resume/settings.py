@@ -210,7 +210,8 @@ CORS_ALLOW_HEADERS = [
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 AUTH_USER_MODEL = "auths.User"
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_collect")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
