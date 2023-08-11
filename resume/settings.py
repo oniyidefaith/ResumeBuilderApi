@@ -30,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 # ALLOWED_HOSTS = ['web-production-cb590.up.railway.app', '127.0.0.1']
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh','web-production-cb590.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','containers-us-west-162.railway.app', '127.0.0.1']
 AUTH_USER_MODEL = 'auths.User'
 
 SWAGGER_SETTINGS = {
